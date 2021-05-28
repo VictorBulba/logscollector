@@ -19,6 +19,7 @@ pub trait Handler {
     async fn handle(&self, params: Self::Input) -> Result<Self::Output, Self::Error>;
 }
 
+// Trick to make dyn handlers
 #[async_trait::async_trait]
 pub trait WrappedHandler {
     async fn handle_json(&self, json: JsonValue) -> Result<JsonValue, JsonValue>;
